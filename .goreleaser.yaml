@@ -53,8 +53,8 @@ brews:
 
         folder: Formula
 
-        caveats: |
-            Internal Usage Only
+        # caveats: |
+        #     Internal Usage Only
 
         homepage: "https://github.com/x-ethr/ethr-cli" # "https://gitlab.com/ethrgg/templates/ethr-cli"
 
