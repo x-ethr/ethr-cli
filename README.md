@@ -1,7 +1,5 @@
 # `ethr-cli`
 
-[[_TOC_]]
-
 ## Overview
 
 `ethr-cli` is a full, working implementation of a `go` cli application; the following
