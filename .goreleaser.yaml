@@ -129,6 +129,9 @@ changelog:
         -   title: "Refactor"
             regexp: '^.*?(r|R)efactor(\([[:word:]]+\))??!?(\ |)?(\:|\-)?(\ |).+$'
             order: 7
+        -   title: "Internal"
+            regexp: '^.*?(i|I)nternal(\([[:word:]]+\))??!?(\ |)?(\:|\-)?(\ |).+$'
+            order: 8
         -   title: Others
             order: 999
 
