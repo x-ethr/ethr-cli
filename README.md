@@ -15,7 +15,6 @@ section(s) where appropriate -- namely `ethr-cli` and VCS references.
 ```bash
 brew tap x-ethr/homebrew-taps
 
-# --> Simplified
 brew install ethr-cli
 ```
 
