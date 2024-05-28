@@ -6,6 +6,14 @@
 
 The [`Makefile`](./Makefile) abstracts the [manual](#manual) section.
 
+[!IMPORTANT]
+> Prior to running the Makefile targets, there are the following requirements
+> - [Homebrew](https://brew.sh)
+> - A file containing a GitHub PAT with write & read access: `~/.config/goreleaser/github_token`
+> - The [`goreleaser`](https://goreleaser.com/install/) cli
+
+See the [manual](#manual) instructions for installation instructions for first-time setup.
+
 ###### Patch Release
 
 ```bash
