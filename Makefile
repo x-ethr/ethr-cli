@@ -151,3 +151,6 @@ release-major: commit-major
 	@echo "$(green-bold)Successful$(reset): $(version)"
 
 major-release: release-major
+	# brew tap x-ethr/homebrew-taps
+	# brew update x-ethr/homebrew-taps
+	# brew update ethr-cli

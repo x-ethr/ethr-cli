@@ -70,7 +70,7 @@
 12. Tap the repository using `git+ssh` protocol (only applicable for private repositories)
 
      ```bash
-     brew tap iac-factory/homebrew-taps git@github.com:iac-factory/homebrew-taps
+     brew tap ethr-cli/homebrew-taps git@github.com:x-ethr/homebrew-taps
      ```
 
 13. Update the Cask if already established
