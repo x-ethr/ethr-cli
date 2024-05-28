@@ -1,0 +1,8 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+images:
+    - name: service:latest
+      newName: private.registry.io/example
+      newTag: 1.0.0
+resources:
+    - application.yaml
