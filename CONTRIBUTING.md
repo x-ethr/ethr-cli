@@ -2,6 +2,30 @@
 
 ## Deployment & Initial Setup (Maintainers)
 
+### Makefile
+
+The [`Makefile`](./Makefile) abstracts the [manual](#manual) section.
+
+###### Patch Release
+
+```bash
+make
+```
+
+###### Minor Release
+
+```bash
+make minor-release
+```
+
+###### Major Release
+
+```bash
+make major-release
+```
+
+### Manual
+
 **The following section is intended only for project maintainers & developers**.
 
 1. Install `goreleaser` if it isn't installed

@@ -65,6 +65,11 @@ dirty-contents 			= $(shell git diff --shortstat 2>/dev/null 2>/dev/null | tail 
 
 all :: patch-release
 
+install:
+	@brew tap x-ethr/homebrew-taps
+	@brew install ethr-cli --force
+	@brew update ethr-cli
+
 tidy:
 	@go mod tidy && go mod vendor
 
@@ -95,7 +100,7 @@ release-patch: commit-patch
 	@goreleaser release --clean
 	@echo "$(green-bold)Successful$(reset): $(version)"
 
-patch-release: release-patch
+patch-release: release-patch install
 
 # --> minor
 
@@ -121,7 +126,7 @@ release-minor: commit-minor
 	@goreleaser release --clean
 	@echo "$(green-bold)Successful$(reset): $(version)"
 
-minor-release: release-minor
+minor-release: release-minor install
 
 # --> major
 
@@ -147,7 +152,4 @@ release-major: commit-major
 	@goreleaser release --clean
 	@echo "$(green-bold)Successful$(reset): $(version)"
 
-major-release: release-major
-	# brew tap x-ethr/homebrew-taps
-	# brew update x-ethr/homebrew-taps
-	# brew update ethr-cli
+major-release: release-major install
