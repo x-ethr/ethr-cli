@@ -14,10 +14,18 @@ brew tap x-ethr/homebrew-taps
 brew install ethr-cli
 ```
 
-### Upgrading
+###### Upgrading
 
 ```bash
 brew update && brew upgrade ethr-cli
+```
+
+###### Reinstalling
+
+```bash
+brew update
+brew unlink ethr-cli
+brew install ethr-cli
 ```
 
 ## Usage
@@ -26,14 +34,6 @@ brew update && brew upgrade ethr-cli
 
 ```bash
 ethr-cli --help
-```
-
-### Reinstalling
-
-```bash
-brew update
-brew unlink ethr-cli
-brew install ethr-cli
 ```
 
 ## Contributions
