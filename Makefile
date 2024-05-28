@@ -63,7 +63,7 @@ dirty-contents 			= $(shell git diff --shortstat 2>/dev/null 2>/dev/null | tail 
 # Package-Specific Target(s)
 # ------------------------------------------------------------------------------------
 
-all :: patch-release update
+all :: patch-release
 
 tidy:
 	@go mod tidy && go mod vendor
@@ -72,11 +72,6 @@ test: tidy
 	@go test ./...
 
 # --> patch
-
-update:
-	@echo "$(magenta-bold)Updating GO Package Registry ...$(reset)"
-	@GOPROXY=proxy.golang.org go list -m "$(package)@v$(version)"
-	@curl --silent "https://proxy.golang.org/$(package)/@v/v$(version).info" | jq 2>/dev/null || curl --silent "https://proxy.golang.org/$(package)/@v/v$(version).info"
 
 bump-patch: test
 	@if ! git diff --quiet --exit-code; then \
