@@ -2,11 +2,7 @@
 
 ## Overview
 
-`ethr-cli` is a full, working implementation of a `go` cli application; the following
-project is a template that can be forked, copied for private or personal usage.
-
-The remaining `README.md`'s contents is for non-template usage. Of course, replace
-section(s) where appropriate -- namely `ethr-cli` and VCS references.
+`ethr-cli` provides utilities for local development, deployment, and ci-related management.
 
 ## Getting Started
 
