@@ -2,7 +2,7 @@
 
 ## Overview
 
-`ethr-cli` provides utilities for local development, deployment, and ci-related management.
+`ethr-cli` provides utilities for local development, deployment(s), and ci-related management.
 
 ## Getting Started
 
@@ -18,6 +18,14 @@ brew install ethr-cli
 
 ```bash
 brew update && brew upgrade ethr-cli
+```
+
+## Usage
+
+###### Available Command(s)
+
+```bash
+ethr-cli --help
 ```
 
 ### Reinstalling
