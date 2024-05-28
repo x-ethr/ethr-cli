@@ -202,5 +202,3 @@ Installation Steps:
 - [Cobra User Guide](https://github.com/spf13/cobra/blob/main/site/content/user_guide.md)
 - [Brew Formula Cookbook](https://github.com/Homebrew/brew/blob/master/docs/Formula-Cookbook.md)
 - [New Cask Formula](https://github.com/Homebrew/homebrew-cask)
-
-## Documentation

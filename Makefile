@@ -52,8 +52,10 @@ major      		= $(shell echo $(version) | sed "s/^\([0-9]*\).*/\1/")
 minor      		= $(shell echo $(version) | sed "s/[0-9]*\.\([0-9]*\).*/\1/")
 patch      		= $(shell echo $(version) | sed "s/[0-9]*\.[0-9]*\.\([0-9]*\).*/\1/")
 
-major-upgrade 	= $(shell expr $(major) + 1).$(minor).$(patch)
-minor-upgrade 	= $(major).$(shell expr $(minor) + 1).$(patch)
+zero = $(shell printf "%s" "0")
+
+major-upgrade 	= $(shell expr $(major) + 1).$(zero).$(zero)
+minor-upgrade 	= $(major).$(shell expr $(minor) + 1).$(zero)
 patch-upgrade 	= $(major).$(minor).$(shell expr $(patch) + 1)
 
 dirty = $(shell git diff --quiet)
