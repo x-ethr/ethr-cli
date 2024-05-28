@@ -97,8 +97,8 @@ commit-patch: bump-patch
 
 release-patch: commit-patch
 	@echo "$(blue-bold)Deployment (Patch)$(reset): \"$(yellow-bold)$(package)$(reset)\" - $(white-bold)$(version)$(reset)"
+	@goreleaser release --clean
 	@echo "$(green-bold)Successful$(reset): $(version)"
-
 
 patch-release: release-patch
 
@@ -123,6 +123,7 @@ commit-minor: bump-minor
 
 release-minor: commit-minor
 	@echo "$(blue-bold)Deployment (Minor)$(reset): \"$(yellow-bold)$(package)$(reset)\" - $(white-bold)$(version)$(reset)"
+	@goreleaser release --clean
 	@echo "$(green-bold)Successful$(reset): $(version)"
 
 minor-release: release-minor
@@ -148,6 +149,7 @@ commit-major: bump-major
 
 release-major: commit-major
 	@echo "$(blue-bold)Deployment (Major)$(reset): \"$(yellow-bold)$(package)$(reset)\" - $(white-bold)$(version)$(reset)"
+	@goreleaser release --clean
 	@echo "$(green-bold)Successful$(reset): $(version)"
 
 major-release: release-major
