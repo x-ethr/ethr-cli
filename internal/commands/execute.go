@@ -8,6 +8,7 @@ import (
 
 	"github.com/x-ethr/ethr-cli/internal/commands/ecdsa"
 	"github.com/x-ethr/ethr-cli/internal/commands/kubernetes"
+	"github.com/x-ethr/ethr-cli/internal/commands/random"
 )
 
 // Execute runs the root command and handles any CLI execution exception. Additionally,
@@ -17,6 +18,7 @@ func Execute(root *cobra.Command) {
 
 	root.AddCommand(kubernetes.Command)
 	root.AddCommand(ecdsa.Command)
+	root.AddCommand(random.Command)
 
 	if e := root.Execute(); e != nil {
 		color.Color().Bold(
