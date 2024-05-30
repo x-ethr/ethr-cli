@@ -8,6 +8,8 @@ import (
 
 var Command = &cobra.Command{
 	Use:                    "kubernetes",
+	Short:                  "K8s API Command(s)",
+	Long:                   "Kubernetes related commands for abstracting away API complexities or simplifying CLI-related usage.",
 	Aliases:                []string{},
 	SuggestFor:             nil,
 	ValidArgs:              nil,

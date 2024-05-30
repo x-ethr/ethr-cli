@@ -6,6 +6,7 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/x-ethr/color"
 
+	"github.com/x-ethr/ethr-cli/internal/commands/ecdsa"
 	"github.com/x-ethr/ethr-cli/internal/commands/kubernetes"
 )
 
@@ -15,6 +16,7 @@ func Execute(root *cobra.Command) {
 	// root.AddCommand(example.Command)
 
 	root.AddCommand(kubernetes.Command)
+	root.AddCommand(ecdsa.Command)
 
 	if e := root.Execute(); e != nil {
 		color.Color().Bold(
