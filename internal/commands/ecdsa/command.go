@@ -3,7 +3,9 @@ package ecdsa
 import (
     "bytes"
     "context"
+    "encoding/base64"
     "fmt"
+    "io"
     "log/slog"
     "os"
     "path/filepath"
@@ -26,14 +28,20 @@ var Command = &cobra.Command{
         fmt.Sprintf("  %s", "# General command usage"),
         fmt.Sprintf("  %s", fmt.Sprintf("%s go run . ecdsa --file \"test.pem\"", constants.Name())),
         "",
+        fmt.Sprintf("  %s", "# Usage without writing to a file"),
+        fmt.Sprintf("  %s", fmt.Sprintf("%s go run . ecdsa --dry-run", constants.Name())),
+        "",
         fmt.Sprintf("  %s", "# Full system path target file"),
         fmt.Sprintf("  %s", fmt.Sprintf("%s go run . ecdsa --file \"/tmp/test.pem\"", constants.Name())),
         "",
         fmt.Sprintf("  %s", "# Generate a directory if it doesn't exist"),
         fmt.Sprintf("  %s", fmt.Sprintf("%s go run . ecdsa --mkdir --file \"./example/test.pem\"", constants.Name())),
         "",
-        fmt.Sprintf("  %s", "# Usage without writing to a file"),
-        fmt.Sprintf("  %s", fmt.Sprintf("%s go run . ecdsa --dry-run", constants.Name())),
+        fmt.Sprintf("  %s", "# Base64-Encode the key's contents"),
+        fmt.Sprintf("  %s", fmt.Sprintf("%s go run . ecdsa --b64", constants.Name())),
+        "",
+        fmt.Sprintf("  %s", "# Base64-Encode the key's contents and write to file"),
+        fmt.Sprintf("  %s", fmt.Sprintf("%s go run . ecdsa --b64 --file \"base64-encoded-key.pem\"", constants.Name())),
     }, "\n"),
     PreRunE: func(cmd *cobra.Command, args []string) error {
         ctx := cmd.Context()
@@ -44,6 +52,18 @@ var Command = &cobra.Command{
         if e := system.ECDSA(ctx, &buffer); e != nil {
             e = fmt.Errorf("unable to write to buffer: %w", e)
             return e
+        }
+
+        if b64 {
+            var content bytes.Buffer
+            if _, e := base64.NewEncoder(base64.StdEncoding, &content).Write(buffer.Bytes()); e != nil {
+                return e
+            }
+
+            buffer.Reset()
+            if _, e := io.Copy(&buffer, &content); e != nil {
+                return e
+            }
         }
 
         ctx = context.WithValue(ctx, "content", &buffer)
@@ -64,7 +84,7 @@ var Command = &cobra.Command{
             if !(system.Exists(dir)) && !(mkdir) {
                 return fmt.Errorf("directory does not exist: %s", dir)
             } else if !(system.Exists(dir)) {
-                if e := os.MkdirAll(dir, 0o755); e != nil {
+                if e := os.MkdirAll(dir, 0o775); e != nil {
                     return e
                 }
             }
@@ -91,14 +111,14 @@ var Command = &cobra.Command{
         ctx := cmd.Context()
 
         content := ctx.Value("content").(*bytes.Buffer)
-        if dryrun {
+        if (dryrun) || (b64 && file == "") {
             defer fmt.Fprintf(os.Stdout, "%s", content.String())
 
             return nil
         }
 
         path := ctx.Value("path").(string)
-        if e := os.WriteFile(path, content.Bytes(), 0o400); e != nil {
+        if e := os.WriteFile(path, content.Bytes(), 0o664); e != nil {
             slog.ErrorContext(ctx, "Unable to Write ECDSA Private Key Contents to File", slog.String("error", e.Error()), slog.String("path", path))
             return e
         }
@@ -118,7 +138,8 @@ func init() {
 
     flags.StringVar(&file, "file", "", "a relative or full-system path to the target generated ecdsa, pem file")
     flags.BoolVar(&mkdir, "mkdir", false, "generate the target directory if it does not exist")
+    flags.BoolVar(&b64, "b64", false, "base64-encode the key's contents - useful when working with kubernetes or secrets")
     flags.BoolVar(&dryrun, "dry-run", false, "output ecdsa private to standard-output without writing to a file")
 
-    Command.MarkFlagsOneRequired("file", "dry-run")
+    Command.MarkFlagsOneRequired("file", "b64", "dry-run")
 }
