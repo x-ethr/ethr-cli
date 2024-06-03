@@ -1,27 +1,17 @@
 # ##############################################################################
-# User-Defined Repository Configuration
+# User-Defined Repository File
 # ##############################################################################
 
 ### Exclusion(s)
 
-.env
-*.env
-*.env.*
+.netrc
+.git-credentials
 
-build
-builds
+*.binary
+**/*.binary
 
-dist
-distribution
-distributions
-
-*.pem
-
-### Inclusion(s)
-
-!.example.env
-!*.example.env
-!*.example.env.*
+*.test
+**/*.test
 
 # ##############################################################################
 # Git-Ignore Templates (Auto-Generated, DO NOT MODIFY SECTIONS BELOW)
@@ -66,8 +56,8 @@ distributions
 *.so
 *.dylib
 
-# Test binary, built with `go test -c`
-*.test
+# Test binary, built with `go v -c`
+*.v
 
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
@@ -75,7 +65,7 @@ distributions
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
-# Go workspace file
+# Go workspace key
 go.work
 
 ### MacOS Template
