@@ -1,8 +1,0 @@
-6c43b68bcd4f9b26e564b9edf3577dec826f39b406c34a862aa90a99b14f39f4  ethr-cli-darwin-arm64.tar.gz
-7661b9ebeab764245d276fb973478b2daeab40c708e150be523a2d9a302be096  ethr-cli-darwin-x86-64.tar.gz
-fb2ad4ed0299a31ecf30d709ee02332997e75751636ba869b0077de923d6c8f5  ethr-cli-linux-arm64.tar.gz
-25ac198d57d5b2dcc4fbdd6e5373be9d6f9a095b00198af81784518d57b07275  ethr-cli-linux-i386.tar.gz
-277281f79cbd47df594fbdfc9364958d59300b23dfd1bf2b2ae72d6079a9f037  ethr-cli-linux-x86-64.tar.gz
-7dadffe11e6e34f6cd31967c9b35884f408041e3453441c08335197db90ab71f  ethr-cli-windows-arm64.zip
-7674a28f170673e1ab6c7b898574b7a40711d9c55a825fadcaf8a98bb0f9337a  ethr-cli-windows-i386.zip
-675c441ab6f7fadf430bf016ab15e25fa097a4f4688aba01b0c227bbcaee59a1  ethr-cli-windows-x86-64.zip
