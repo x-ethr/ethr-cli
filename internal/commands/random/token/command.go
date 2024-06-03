@@ -22,7 +22,7 @@ var Command = &cobra.Command{
 	Long:       "The following command generates a random, url-safe and cryptographically secure token.",
 	Example: strings.Join([]string{
 		fmt.Sprintf("  %s", "# General command usage"),
-		fmt.Sprintf("  %s", fmt.Sprintf("%s go run . ecdsa --file \"test.pem\"", constants.Name())),
+		fmt.Sprintf("  %s", fmt.Sprintf("%s ecdsa --file \"test.pem\"", constants.Name())),
 		"",
 	}, "\n"),
 	PreRunE: func(cmd *cobra.Command, args []string) error {
