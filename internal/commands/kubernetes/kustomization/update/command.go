@@ -3,7 +3,8 @@ package update
 import (
 	"github.com/spf13/cobra"
 
-	"github.com/x-ethr/ethr-cli/internal/commands/kubernetes/kustomization/update/image"
+    "github.com/x-ethr/ethr-cli/internal/commands/kubernetes/kustomization/update/build"
+    "github.com/x-ethr/ethr-cli/internal/commands/kubernetes/kustomization/update/image"
 )
 
 var Command = &cobra.Command{
@@ -24,4 +25,5 @@ var Command = &cobra.Command{
 
 func init() {
 	Command.AddCommand(image.Command)
+	Command.AddCommand(build.Command)
 }
